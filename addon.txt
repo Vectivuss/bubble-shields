@@ -1,0 +1,8 @@
+"AddonInfo"
+{
+	"name"			"Bubble Shields"
+	"version"		"2.0.0"
+	"author_name"	"Vectivus"
+	"author_url"	"https://github.com/vectivuss/bubble-shields"
+	"override"		"0"
+}
