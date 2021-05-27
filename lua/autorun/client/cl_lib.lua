@@ -10,6 +10,8 @@ function PlaySound( s )
 	surface.PlaySound( "vgui/" .. s .. ".ogg" )
 end
 
+local blur = Material( "pp/blurscreen" )
+
 function draw.BlurPanel( panel, amount, color )
 	local x, y = panel:LocalToScreen(0, 0)
 	local w, h = ScrW(), ScrH()
