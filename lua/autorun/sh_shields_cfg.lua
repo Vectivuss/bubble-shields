@@ -16,7 +16,7 @@ vs.cfg = vs.cfg or {}
 vs.cfg = {
 
 	-- true = workshopDL. false = fastDL.
-	WorkshopDL = false,
+	WorkshopDL = true,
 
 	Npc = { -- NPC Configuration
 
