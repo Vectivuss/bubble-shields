@@ -57,10 +57,10 @@ vs.cfg = {
 		Shadows = false,
 
 		-- The sound the bubble makes when it's activated
-		Active = "bubbles/b_active.mp3",
+		Active = "bubbles/b_active.ogg",
 
 		-- The sound the bubble makes when each break
-		Break = "bubbles/b_break.mp3",
+		Break = "bubbles/b_break.ogg",
 
 	},
 
