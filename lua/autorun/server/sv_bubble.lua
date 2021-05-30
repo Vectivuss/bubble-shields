@@ -1,7 +1,7 @@
 do end
 
 hook.Add( "PlayerInitialSpawn", "p.reset.shields", function( p )
-	if !vs.cfg.Bubble.ShieldBreak then
+	if ( !vs.cfg.Bubble.ShieldBreak )then
 		p:SetNWInt( "shields", 0 )
 		p.sAmount = 0
 	else
@@ -22,6 +22,7 @@ end )
 
 hook.Add( "EntityTakeDamage", "bubble.take.damage", function( p, d )
 	if ( p:IsPlayer() and d:GetAttacker():IsPlayer() ) then
+
 		if ( p.sAmount > 0 and !p.bubbleActive ) then
 			p.bubbleActive = true
 
@@ -75,11 +76,26 @@ hook.Add( "EntityTakeDamage", "bubble.take.damage", function( p, d )
 
 			timer.Simple( vs.cfg.Shield.ShieldTime, function()
 				p.bubbleActive = false
-				p:GodDisable()
 				SafeRemoveEntity( a )
 				sound.Play( vs.cfg.Bubble.Break, p:GetPos(), 128, 120 )
+
+				if vs.cfg.Bubble.Protection == 1 then
+					p:GodDisable()
+				end
 			end )
-			p:GodEnable()
+			if vs.cfg.Bubble.Protection == 1 then
+				p:GodEnable()
+			end
+		end
+	end
+end )
+
+hook.Add( "EntityTakeDamage", "p.active.protection", function( p, d )
+	if ( !vs.cfg.Bubble.Protection == 2 ) then return end
+	if p:IsPlayer() then
+		if p:HasGodMode() then return end
+		if p.sAmount > 0 then
+			return true
 		end
 	end
 end )
