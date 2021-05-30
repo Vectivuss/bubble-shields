@@ -62,6 +62,15 @@ vs.cfg = {
 		-- The sound the bubble makes when each break
 		Break = "bubbles/b_break.ogg",
 
+		/*
+			1. Godmode -> Puts the Player in godmode when active
+			Note: Using godmode can collide with other addons such as administration mods
+
+			2. SetDamage -> Removes all incoming damage essentially godmode without godmode ( recommended )
+		*/
+
+		Protection = 2,
+
 	},
 
 	Shield = { -- Settings on how the shield works
@@ -88,11 +97,11 @@ vs.cfg = {
 		Steam = { -- Supports steamid and steamid64 https://steamid.io/
 
 			-- Use this format to add users, feel free to remove me
-			[ "76561198371018204" ] = 30, -- vectivus
+			[ "76561198371018204" ] = 30,
 
 		},
 
-		Rank = { -- This will support any admin mod that uses 'GetUserGroup'	
+		Rank = { -- This will support any admin mod that uses 'GetUserGroup'
 			-- If the player also has a steamid limit that will overwrite the usergroup limit
 
 			-- [ "RANK" ] = SHIELD AMOUNT ( NUMBER )
@@ -109,7 +118,7 @@ vs.cfg = {
 	-- "all" will make the weapons break all victims shields
 	Weapons = {
 
-		[ "weapon_rpg" ] = "all",
+		--[ "weapon_rpg" ] = "all",
 		[ "weapon_357" ] = 2,
 
 	},
