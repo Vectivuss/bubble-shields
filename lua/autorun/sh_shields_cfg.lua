@@ -97,7 +97,7 @@ vs.cfg = {
 		Steam = { -- Supports steamid and steamid64 https://steamid.io/
 
 			-- Use this format to add users, feel free to remove me
-			[ "76561198371018204" ] = 30,
+			--[ "76561198371018204" ] = 30,
 
 		},
 
@@ -118,7 +118,7 @@ vs.cfg = {
 	-- "all" will make the weapons break all victims shields
 	Weapons = {
 
-		--[ "weapon_rpg" ] = "all",
+		[ "weapon_rpg" ] = "all",
 		[ "weapon_357" ] = 2,
 
 	},
@@ -151,9 +151,9 @@ vs.cfg.Shop = { -- This is the NPC'S Store, add / change / remove anything you w
 	},
 
 	{
-		name = "Max Shields",
-		price = vs.cfg.Shield.Price * vs.cfg.Shield.Max,
-		amount = vs.cfg.Shield.Max,
+		name = "Four Shields",
+		price = vs.cfg.Shield.Price * 4,
+		amount = 4,
 	},
 
 }
