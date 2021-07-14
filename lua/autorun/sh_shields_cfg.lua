@@ -97,7 +97,7 @@ vs.cfg = {
 		Steam = { -- Supports steamid and steamid64 https://steamid.io/
 
 			-- Use this format to add users, feel free to remove me
-			--[ "76561198371018204" ] = 30,
+			[ "76561198371018204" ] = 30,
 
 		},
 
