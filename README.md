@@ -12,7 +12,6 @@ Bubble shields protect the user from ALL incoming damage for a certain amount of
 |  :--- | :--- |
 | Addon Integration | Easy to integration other addons with bubble shields e.g voidcases
 | Administration | Bubble shields currently supports ULX and SAM administration with cmds
-| Logging | Allows addons such as BLogs to monitor purchases and shield breaks
 | Lightweight | The addon is completely lightweight and easy to setup / configure
 
 ### *Requirements*
