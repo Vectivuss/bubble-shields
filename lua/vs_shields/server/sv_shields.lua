@@ -33,6 +33,8 @@ end
 
 hook.Add( "PlayerSpawn", "VectivusShields.Respawn", function( p )
     VectivusShields.SetShields( p, 0 )
+    VectivusShields.SetActiveShield( p, false )
+    SafeRemoveEntity(p.vs_shield)
 end )
 
 function VectivusShields.OnTakeDamage( e, t )
@@ -48,13 +50,16 @@ function VectivusShields.OnTakeDamage( e, t )
     VectivusShields.SetActiveShield( p, true )
     VectivusShields.CreateShield( p )
 
-    local wep = IsValid(att:GetActiveWeapon()) and att:GetActiveWeapon()
-    local class = wep:GetClass()
+    local wep = IsValid(att:GetActiveWeapon()) and att:GetActiveWeapon() or nil
     local total_shields = VectivusShields.GetShields(p)
-    local data = VectivusShields.Config.Weapons[class or ""] or nil
+
+    if wep then
+        local class = wep:GetClass()
+        local data = VectivusShields.Config.Weapons[class or ""] or nil
+    end
 
     do // shield deduction
-        if data == string.lower("all") then
+        if data and data == string.lower("all") then
             VectivusShields.SetShields( p, 0 )
         elseif data then
             total_shields = total_shields - data
@@ -66,10 +71,12 @@ function VectivusShields.OnTakeDamage( e, t )
     end
 
     do // network notification
-        net.Start( "VectivusShields.Notify" )
-        net.WriteString( p:Name() )
-        net.WriteUInt( total_shields, 8 )
-        net.Send(att)
+        if att:IsPlayer() and !att:IsBot() then
+            net.Start( "VectivusShields.Notify" )
+            net.WriteString( p:Name() )
+            net.WriteUInt( total_shields, 8 )
+            net.Send(att)
+        end
     end
 
     hook.Run( "VectivusShields.ShieldStarted", p, att, t )
